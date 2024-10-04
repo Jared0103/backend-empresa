@@ -1,7 +1,7 @@
-import empleadoService from '../services/empleadoService.js'
+import EmpleadoService from '../services/empleadoService.js'
 import { validationResult } from 'express-validator'
 
-const EmpleadoService = new EmpleadoService()
+const empleadoService = new EmpleadoService()
 
 const handleValidationErrors = (req, res, next) => {
     const errors = validationResult(req)

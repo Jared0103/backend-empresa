@@ -75,12 +75,13 @@ class EmpleadoRepository {
     }
 
     async getAllEmpleadoByUsername(usuario) {
-        const doc = db.collection('empelados').where('usuario', '==', usuario).get()
+        const empleado = db.collection('empelados').where('usuario', '==', usuario).get()
         if(empleado.empty) {
             return null
         }
 
         const doc = empleado.docs[0]
+        const data = doc.data()
         return  EmpleadoModel(
             doc.id,
             data.nombre,
