@@ -14,7 +14,7 @@ const handleValidationErrors = (req, res, next) => {
 }
 
 const createEmpleado = async (req, res) => {
-    handleValidationErrors(req)
+//    handleValidationErrors(req)
     try {
         const empleadoId = await empleadoService.
         createEmpleado(req.body, req.file)
@@ -31,7 +31,7 @@ const createEmpleado = async (req, res) => {
 }
 
 const updateEmpleado = async (req, res) => {
-    handleValidationErrors(req)
+//    handleValidationErrors(req)
     try {
         const id = req.params.id
         await empleadoService.updateEmpleado(id, req.body, req.file)
@@ -47,7 +47,7 @@ const updateEmpleado = async (req, res) => {
 }
 
 const deleteEmpleado = async (req, res) => {
-    handleValidationErrors(req)
+//    handleValidationErrors(req)
     try {
         const id = req.params.id
         await empleadoService.deleteEmpleado(id)
@@ -78,7 +78,7 @@ const getAllEmpleados = async ( req, res) => {
 }
 
 const getEmpleadoById = async (req, res) => {
-    handleValidationErrors(req)
+//    handleValidationErrors(req)
     try {
         const id = req.params.id
         const empleado = empleadoService.getEmpleadoById(id)
@@ -101,7 +101,7 @@ const getEmpleadoById = async (req, res) => {
 }
 
 const getEmpleadoByUsername = async (req, res) => {
-    handleValidationErrors(req)
+//    handleValidationErrors(req)
     try {
         const username = req.params.username
         const empleado = empleadoService.getEmpleadoByUsername(username)
@@ -124,7 +124,7 @@ const getEmpleadoByUsername = async (req, res) => {
 }
 
 const getEmpleadoByRol = async (req, res) => {
-    handleValidationErrors(req)
+//    handleValidationErrors(req)
     try {
         const rol = req.params.rol
         const empleado = empleadoService.getEmpleadoByRol(rol)
