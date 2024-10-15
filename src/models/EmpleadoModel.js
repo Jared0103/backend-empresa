@@ -1,5 +1,5 @@
 class EmpleadoModel {
-    constructor(id, nombre, aparetno, amaterno, direccion, telefono, ciudad, estado, usuario, password, rol, imagen) {
+    constructor(id, nombre, apaterno, amaterno, direccion, telefono, ciudad, estado, usuario, password, rol, imagen) {
         this.id = id
         this.nombre = nombre
         this.apaterno = apaterno
