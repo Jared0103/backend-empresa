@@ -1,5 +1,5 @@
-import {db} from '../config/firebase.js'
-import EmpleadoModel from '../models/EmpleadoModel.js'
+import { db } from '../config/firebase.js';
+import EmpleadoModel from '../models/EmpleadoModel.js';
 
 class EmpleadoRepository {
     async createEmpleado(data) {
@@ -15,24 +15,24 @@ class EmpleadoRepository {
             password: data.password,
             rol: data.rol,
             imagen: data.imagen
-        })
-        return empleado.id
+        });
+        return empleado.id;
     }
 
-    async updateEmpleado (id, data) {
-        await db.collection('empleados').doc(id).update(data)
+    async updateEmpleado(id, data) {
+        await db.collection('empleados').doc(id).update(data);
     }
 
-    async deleteEmpleado (id) {
-        await db.collection('empleados').doc(id).delete()
+    async deleteEmpleado(id) {
+        await db.collection('empleados').doc(id).delete();
     }
 
     async getAllEmpleados() {
-        const docs = await db.collection('empleados').get()
-        const empelados = []
+        const docs = await db.collection('empleados').get();
+        const empleados = [];
         docs.forEach((doc) => {
-            const data = doc.data()
-            empelados.push(new EmpleadoModel(
+            const data = doc.data();
+            empleados.push(new EmpleadoModel(
                 doc.id,
                 data.nombre,
                 data.apaterno,
@@ -45,19 +45,19 @@ class EmpleadoRepository {
                 data.password,
                 data.rol,
                 data.imagen
-            ))
-        })
-        return empelados
+            ));
+        });
+        return empleados;
     }
 
     async getAllEmpleadoById(id) {
-        const doc = await db.collection('empleados').doc(id).get()
+        const doc = await db.collection('empleados').doc(id).get();
 
-        if(!doc.exists) {
-            return  null
+        if (!doc.exists) {
+            return null;
         }
 
-        const data = doc.data()
+        const data = doc.data();
         return new EmpleadoModel(
             doc.id,
             data.nombre,
@@ -71,18 +71,18 @@ class EmpleadoRepository {
             data.password,
             data.rol,
             data.imagen
-        )
+        );
     }
 
     async getAllEmpleadoByUsername(usuario) {
-        const empleado = db.collection('empelados').where('usuario', '==', usuario).get()
-        if(empleado.empty) {
-            return null
+        const empleadoQuery = await db.collection('empleados').where('usuario', '==', usuario).get();
+        if (empleadoQuery.empty) {
+            return null;
         }
 
-        const doc = empleado.docs[0]
-        const data = doc.data()
-        return  EmpleadoModel(
+        const doc = empleadoQuery.docs[0];
+        const data = doc.data();
+        return new EmpleadoModel(
             doc.id,
             data.nombre,
             data.apaterno,
@@ -95,15 +95,15 @@ class EmpleadoRepository {
             data.password,
             data.rol,
             data.imagen
-        )
+        );
     }
 
-    async getAllEmpleadoByRol (rol) {
-        const docs = await db.collection('empleados').where('rol', '==', rol).get()
-        const empelados = []
+    async getAllEmpleadoByRol(rol) {
+        const docs = await db.collection('empleados').where('rol', '==', rol).get();
+        const empleados = [];
         docs.forEach((doc) => {
-            const data = doc.data()
-            empelados.push(new EmpleadoModel(
+            const data = doc.data();
+            empleados.push(new EmpleadoModel(
                 doc.id,
                 data.nombre,
                 data.apaterno,
@@ -116,10 +116,10 @@ class EmpleadoRepository {
                 data.password,
                 data.rol,
                 data.imagen
-            ))
-        })
-        return empelados
+            ));
+        });
+        return empleados;
     }
 }
 
-export default EmpleadoRepository
+export default EmpleadoRepository;

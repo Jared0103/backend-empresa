@@ -17,7 +17,7 @@ const router = express.Router()
 
 router.post(
     '/create',
-    authMiddleware, // Aquí agregas el middleware de autenticación
+    //authMiddleware, // Aquí agregas el middleware de autenticación
     upload.single('imagen'),
     [
         check('nombre').notEmpty().withMessage('El nombre es obligatorio'),

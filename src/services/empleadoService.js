@@ -12,7 +12,7 @@ const saltRound = 10
 
 class EmpleadoService {
     async createEmpleado(data, file) {
-        const existsEmpleado = await empleadoRepository.getEmpleadoByUsername(data.username)
+        const existsEmpleado = await empleadoRepository.getAllEmpleadoByUsername(data.usuario)
         if (existsEmpleado) {
             throw new Error('El username ya existe')
         }
@@ -27,7 +27,7 @@ class EmpleadoService {
             data.telefono,
             data.ciudad,
             data.estado,
-            data.username,
+            data.usuario,
             hashedPass,
             data.rol,
             null
@@ -51,7 +51,7 @@ class EmpleadoService {
             throw new Error('Empleado no encontrado')
         }
 
-        if (data.password) {  // Corregido error tipográfico
+        if (data.password) {
             data.password = await bcrypt.hash(data.password, saltRound)
         }
 
