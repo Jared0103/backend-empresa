@@ -19,12 +19,12 @@ const createEmpleado = async (req, res) => {
         const empleadoId = await empleadoService.
         createEmpleado(req.body, req.file)
         res.status(201).json({
-            succes: true,
+            success: true,
             empleadoId
         })
     }catch(error) {
         res.status(400).json({
-            succes: false,
+            success: false,
             message: error.message
         })
     }
@@ -36,11 +36,11 @@ const updateEmpleado = async (req, res) => {
         const id = req.params.id
         await empleadoService.updateEmpleado(id, req.body, req.file)
         res.status(201).json({
-            succes: true
+            success: true
         })
     }catch(error) {
         res.status(400).json({
-            succes: false,
+            success: false,
             message: error.message
         })
     }
@@ -52,11 +52,11 @@ const deleteEmpleado = async (req, res) => {
         const id = req.params.id
         await empleadoService.deleteEmpleado(id)
         res.status(201).json({
-            succes: true
+            success: true
         })
     }catch(error) {
         res.status(400).json({
-            succes: false,
+            success: false,
             message: error.message
         })
     }
@@ -66,12 +66,12 @@ const getAllEmpleados = async ( req, res) => {
     try {
         const empleados = await empleadoService.getAllEmpleados()
         res.status(201).json({
-            succes: true,
+            success: true,
             empleados
         })
     }catch(error) {
         res.status(400).json({
-            succes: false,
+            success: false,
             message: error.message
         })
     }
@@ -84,17 +84,17 @@ const getEmpleadoById = async (req, res) => {
         const empleado = empleadoService.getEmpleadoById(id)
         if(!empleado) {
             res.status(404).json({
-                succes: false,
+                success: false,
                 message: 'Empleado not found'
             })
         }
         res.status(201).json({
-            succes: true,
+            success: true,
             empleado
         })
     }catch(error) {
         res.status(400).json({
-            succes: false,
+            success: false,
             message: error.message
         })
     }
@@ -107,17 +107,17 @@ const getEmpleadoByUsername = async (req, res) => {
         const empleado = empleadoService.getEmpleadoByUsername(username)
         if(!empleado) {
             res.status(404).json({
-                succes: false,
+                success: false,
                 message: 'Empleado not found'
             })
         }
         res.status(201).json({
-            succes: true,
+            success: true,
             empleado
         })
     }catch(error) {
         res.status(400).json({
-            succes: false,
+            success: false,
             message: error.message
         })
     }
@@ -130,17 +130,17 @@ const getEmpleadoByRol = async (req, res) => {
         const empleado = empleadoService.getEmpleadoByRol(rol)
         if(!empleado) {
             res.status(404).json({
-                succes: false,
+                success: false,
                 message: 'Empleado not found'
             })
         }
         res.status(201).json({
-            succes: true,
+            success: true,
             empleado
         })
     }catch(error) {
         res.status(400).json({
-            succes: false,
+            success: false,
             message: error.message
         })
     }

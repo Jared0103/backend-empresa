@@ -3,7 +3,7 @@ import EmpleadoModel from '../models/EmpleadoModel.js';
 
 class EmpleadoRepository {
     async createEmpleado(data) {
-        const empleado = await db.collection('empleados').add({
+        const empleado = await db.collection('empleados_computo').add({
             nombre: data.nombre,
             apaterno: data.apaterno,
             amaterno: data.amaterno,
@@ -20,15 +20,15 @@ class EmpleadoRepository {
     }
 
     async updateEmpleado(id, data) {
-        await db.collection('empleados').doc(id).update(data);
+        await db.collection('empleados_computo').doc(id).update(data);
     }
 
     async deleteEmpleado(id) {
-        await db.collection('empleados').doc(id).delete();
+        await db.collection('empleados_computo').doc(id).delete();
     }
 
     async getAllEmpleados() {
-        const docs = await db.collection('empleados').get();
+        const docs = await db.collection('empleados_computo').get();
         const empleados = [];
         docs.forEach((doc) => {
             const data = doc.data();
@@ -51,7 +51,7 @@ class EmpleadoRepository {
     }
 
     async getAllEmpleadoById(id) {
-        const doc = await db.collection('empleados').doc(id).get();
+        const doc = await db.collection('empleados_computo').doc(id).get();
 
         if (!doc.exists) {
             return null;
@@ -75,7 +75,7 @@ class EmpleadoRepository {
     }
 
     async getAllEmpleadoByUsername(usuario) {
-        const empleadoQuery = await db.collection('empleados').where('usuario', '==', usuario).get();
+        const empleadoQuery = await db.collection('empleados_computo').where('usuario', '==', usuario).get();
         if (empleadoQuery.empty) {
             return null;
         }
@@ -99,7 +99,7 @@ class EmpleadoRepository {
     }
 
     async getAllEmpleadoByRol(rol) {
-        const docs = await db.collection('empleados').where('rol', '==', rol).get();
+        const docs = await db.collection('empleados_computo').where('rol', '==', rol).get();
         const empleados = [];
         docs.forEach((doc) => {
             const data = doc.data();
